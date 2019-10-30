@@ -53,6 +53,11 @@ local function negotiate(s, options, timeout)
 			old:inherit(params)
 			ssl:setParam(old)
 		end
+		if options.verify_mode then
+			-- ssl:setVerify(openssl_ctx.VERIFY_NONE)
+			ssl:setVerify(options.verify_mode)
+		end
+
 		local ok, err, errno = s:starttls(ssl, timeout)
 		if not ok then
 			return nil, err, errno

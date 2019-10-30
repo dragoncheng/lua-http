@@ -504,6 +504,7 @@ function request_methods:go(timeout)
 			sendname = self.sendname;
 			version = version;
 			h2_settings = default_h2_settings;
+			verify_mode = self.verify_mode
 		}, deadline and deadline-monotime())
 		if connection == nil then
 			return nil, err, errno
